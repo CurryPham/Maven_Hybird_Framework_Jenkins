@@ -3,19 +3,23 @@
 <suite name="Failed suite [NopCommerce - User]">
   <listeners>
     <listener class-name="commons.MethodListener"/>
+    <listener class-name="reportConfig.ReportNGListener"/>
+    <listener class-name="reportConfig.ExtentTestListener"/>
+    <listener class-name="reportConfig.AllureTestListener"/>
+    <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+    <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
   </listeners>
   <test thread-count="5" name="Run on chrome(failed)">
-    <parameter name="browser" value="chrome"/>
+    <parameter name="browser" value="firefox"/>
     <classes>
-      <class name="com.saurcelab.sort.Level_19_Sort_Asc_Desc">
+      <class name="com.nopcommerce.user.Level_18_Pattern_Object">
         <methods>
           <include name="beforeClass"/>
-          <include name="TC_01_Name"/>
           <include name="afterClass"/>
-          <include name="TC_02_Price"/>
+          <include name="User_01_Register" invocation-numbers="0"/>
           <include name="initBeforeSuite"/>
         </methods>
-      </class> <!-- com.saurcelab.sort.Level_19_Sort_Asc_Desc -->
+      </class> <!-- com.nopcommerce.user.Level_18_Pattern_Object -->
     </classes>
   </test> <!-- Run on chrome(failed) -->
 </suite> <!-- Failed suite [NopCommerce - User] -->

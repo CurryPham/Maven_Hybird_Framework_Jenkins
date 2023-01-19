@@ -2,6 +2,7 @@ package com.nopcommerce.user;
 
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.Status;
 import com.nopcommerce.common.Common_01_Register;
 import com.nopcommerce.common.Common_01_Register_Cookie;
 
@@ -12,9 +13,13 @@ import pageObjects.user.nopCommerce.UserCustomerInforPageObject;
 import pageObjects.user.nopCommerce.UserHomePageObject;
 import pageObjects.user.nopCommerce.UserLoginPageObject;
 import pageObjects.user.nopCommerce.UserRegisterPageObject;
+import reportConfig.ExtentTestManager;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
+
+import java.lang.reflect.Method;
+
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -39,8 +44,9 @@ public class Level_18_Pattern_Object extends BaseTest {
 	}
 
 	@Test
-	public void User_01_Register() {
-		log.info("Register - Step 01: Navigate to 'Register page'");
+	public void User_01_Register(Method method) {
+		ExtentTestManager.startTest(method.getName(), "User_01_Register");
+		ExtentTestManager.getTest().log(Status.INFO, "Register - Step 01: Navigate to 'Register page'");
 		registerPage = homePage.clickToRegister();
 		showBrowserConsoleLogs(driver);
 
@@ -77,8 +83,9 @@ public class Level_18_Pattern_Object extends BaseTest {
 	}
 
 	@Test
-	public void User_02_Login() {
-		log.info("Login - Step 01: Navigate to 'Home page'");
+	public void User_02_Login(Method method) {
+		ExtentTestManager.startTest(method.getName(), "User_02_Login");
+		ExtentTestManager.getTest().log(Status.INFO, "Register - Step 01: Navigate to 'Home page'");
 		loginPage = homePage.openLoginPage();
 		showBrowserConsoleLogs(driver);
 

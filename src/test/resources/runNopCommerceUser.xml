@@ -3,16 +3,16 @@
 
 <listeners>
 	<listener class-name="commons.MethodListener"></listener>
-	<!-- <listener class-name="reportConfig.ReportNGListener"></listener>-->
-	<!-- <listener class-name="reportConfig.ExtentTestListener"></listener>-->
-	<!--<listener class-name="reportConfig.AllureTestListener"></listener> -->
-	<!-- <listener class-name="org.uncommons.reportng.HTMLReporter"></listener>-->
-	<!-- <listener class-name="org.uncommons.reportng.JUnitXMLReporter"></listener>-->
+	 <listener class-name="reportConfig.ReportNGListener"></listener>
+	<listener class-name="reportConfig.ExtentTestListener"></listener>
+	<listener class-name="reportConfig.AllureTestListener"></listener> 
+	<listener class-name="org.uncommons.reportng.HTMLReporter"></listener>
+ <listener class-name="org.uncommons.reportng.JUnitXMLReporter"></listener>
 </listeners>
 
 
   <test name="Run on chrome">
-  <parameter name = "browser" value = "chrome"/>
+  <parameter name = "browser" value = "firefox"/>
     <classes>
    
       <class name="com.nopcommerce.user.Level_18_Pattern_Object"/>
