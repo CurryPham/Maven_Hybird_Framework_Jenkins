@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [NopCommerce - User]">
+  <listeners>
+    <listener class-name="commons.MethodListener"/>
+  </listeners>
+  <test thread-count="5" name="Run on chrome(failed)">
+    <parameter name="browser" value="chrome"/>
+    <classes>
+      <class name="com.saurcelab.sort.Level_19_Sort_Asc_Desc">
+        <methods>
+          <include name="beforeClass"/>
+          <include name="TC_01_Name"/>
+          <include name="afterClass"/>
+          <include name="TC_02_Price"/>
+          <include name="initBeforeSuite"/>
+        </methods>
+      </class> <!-- com.saurcelab.sort.Level_19_Sort_Asc_Desc -->
+    </classes>
+  </test> <!-- Run on chrome(failed) -->
+</suite> <!-- Failed suite [NopCommerce - User] -->

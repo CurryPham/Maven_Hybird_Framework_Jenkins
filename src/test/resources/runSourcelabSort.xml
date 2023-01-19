@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Sourcelab - Sort" prallel="failse" thread-count="3">
+
+<listeners>
+	<listener class-name="commons.MethodListener"></listener>
+</listeners>
+
+  <parameter name = "appUrl" value = "https://www.saucedemo.com/"/>
+  <test name="Run on FIREFOX">
+  <parameter name = "browser" value = "firefox"/>
+    <classes>
+      <class name="com.saurcelab.sort.Level_19_Sort_Asc_Desc"/>
+    </classes> 
+  </test>
+ 
+</suite> 

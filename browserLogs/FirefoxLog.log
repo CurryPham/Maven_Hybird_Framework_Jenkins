@@ -1,0 +1,19 @@
+1674137430756	geckodriver	INFO	Listening on 127.0.0.1:31260
+1674137431460	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "C:\\Users\\Alpaca\\AppData\\Local\\Temp\\rust_mozprofilecIg04J"
+1674137432030	Marionette	INFO	Marionette enabled
+1674137432034	Marionette	INFO	Listening on port 53070
+Read port: 53070
+1674137432344	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+WARNING: content window passed to PrivateBrowsingUtils.isWindowPrivate. Use isContentWindowPrivate instead (but only for frame scripts).
+pbu_isWindowPrivate@resource://gre/modules/PrivateBrowsingUtils.sys.mjs:23:11
+isBrowserPrivate@resource://gre/modules/PrivateBrowsingUtils.sys.mjs:43:19
+loadURI@resource://gre/modules/RemoteWebNavigation.jsm:84:56
+loadURI/<@chrome://global/content/elements/browser-custom-element.js:824:28
+_wrapURIChangeCall@chrome://global/content/elements/browser-custom-element.js:751:9
+loadURI@chrome://global/content/elements/browser-custom-element.js:823:12
+loadURI@chrome://mozapps/content/extensions/aboutaddons.js:2475:18
+render/<@chrome://mozapps/content/extensions/aboutaddons.js:2454:14
+render@chrome://mozapps/content/extensions/aboutaddons.js:2413:11
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Alpaca\\AppData\\Local\\Temp\\rust_mozprofilecIg04J\\search.json.mozlz4", (void 0)))
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://demo.nopcommerce.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://demo.nopcommerce.com."

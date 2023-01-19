@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="NopCommerce - Admin">
+
+ <parameter name="url" value="DEV"/>
+
+<listeners>
+	<listener class-name="commons.MethodListener"></listener>
+	<listener class-name="org.uncommons.reportng.HTMLReporter"></listener>
+	<listener class-name="org.uncommons.reportng.JUnitXMLReporter"></listener>
+</listeners>
+  <test name="Run on Firefox">
+  <parameter name = "browser" value = "firefox"/>
+    <classes>
+      <class name="com.nopcommerce.user.Level_14_Log_ReportNG"/>
+    </classes>
+  </test> 
+ 
+</suite> 
