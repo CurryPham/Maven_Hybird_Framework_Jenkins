@@ -1,14 +1,14 @@
-1674142224255	geckodriver	INFO	Listening on 127.0.0.1:10288
-1674142225371	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-private" "--disable_notifications" "--disable-geolocation" "intl.accept_languages" "vi-vn, vi, en-us, en" "-no-remote" "-profile" "C:\\Users\\Alpaca\\AppData\\Local\\Temp\\rust_mozprofilebs0vNa"
-1674142225763	Marionette	INFO	Marionette enabled
-1674142225769	Marionette	INFO	Listening on port 54120
-Read port: 54120
+1674180314952	geckodriver	INFO	Listening on 127.0.0.1:18327
+1674180316177	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-private" "--disable_notifications" "--disable-geolocation" "intl.accept_languages" "vi-vn, vi, en-us, en" "-no-remote" "-profile" "C:\\Users\\Alpaca\\AppData\\Local\\Temp\\rust_mozprofile5ACQft"
+1674180316612	Marionette	INFO	Marionette enabled
+1674180316619	Marionette	INFO	Listening on port 61859
 JavaScript error: resource://gre/modules/URIFixup.sys.mjs, line 465: NS_ERROR_MALFORMED_URI: Couldn't build a valid uri
-1674142225891	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
-console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Alpaca\\AppData\\Local\\Temp\\rust_mozprofilebs0vNa\\search.json.mozlz4", (void 0)))
+Read port: 61859
+1674180316895	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Alpaca\\AppData\\Local\\Temp\\rust_mozprofile5ACQft\\search.json.mozlz4", (void 0)))
 console.warn: LoginRecipes: "Falling back to a synchronous message for: https://demo.nopcommerce.com."
 console.warn: LoginRecipes: "Falling back to a synchronous message for: https://demo.nopcommerce.com."
-1674142236632	Marionette	INFO	Stopped listening on port 54120
+1674180327371	Marionette	INFO	Stopped listening on port 61859
 WARNING: A blocker encountered an error while we were waiting.
           Blocker:  Waiting for ping task
           Phase: TelemetryController: Waiting for pending ping activity
