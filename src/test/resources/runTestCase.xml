@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="NopCommerce - User">
+
+    <parameter name="url" value="https://demo.nopcommerce.com/"></parameter>
+
+<listeners>
+	<listener class-name="commons.MethodListener"></listener>
+	 <listener class-name="reportConfig.ReportNGListener"></listener>
+	<listener class-name="reportConfig.ExtentTestListener"></listener>
+	<listener class-name="reportConfig.AllureTestListener"></listener> 
+	<listener class-name="org.uncommons.reportng.HTMLReporter"></listener>
+ <listener class-name="org.uncommons.reportng.JUnitXMLReporter"></listener>
+</listeners>
+
+
+  <test name="Run on fire fox">
+  <parameter name = "browser" value = "Firefox"/>
+  <parameter name = "osName" value = "Windows 10"/>\
+    <classes>
+   
+      <class name="grid.Grid_Cloud_Source_Labs"/>
+    </classes> 
+  </test>
+ 
+</suite>
+

@@ -16,6 +16,12 @@ public class GlobalConstants {
 	public static final String DRAG_DROP_HTML5 = PROJECT_PATH + File.separator + "dragDropsHTML5";
 	public static final String AUTO_IT_SCRIPT = PROJECT_PATH + File.separator + "autoIT";
 	public static final String REPORTNG_SCREENSHOT = PROJECT_PATH + File.separator + "reportNGImages" + File.separator;
+	public static final String BROWSER_USERNAME = "automation_kpN7twLsux";
+	public static final String BROWSER_AUTOMATE_KEY = "yCiWTxExJk6JURrsQWmJ";
+	public static final String BROWSER_STACK_URL = "https://" + BROWSER_USERNAME + ":" + BROWSER_AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
+	public static final String BROWSER_SOUCELABS_USERNAME = "oauth-d3891340-042e7";
+	public static final String BROWSER_SOUCELABS_AUTOMATE_KEY = "0088dcc6-5dc5-4085-8a90-8d4cf4c47a0f";
+	public static final String BROWSER_SOUCELABS_STACK_URL = "https://" + BROWSER_SOUCELABS_USERNAME + ":" + BROWSER_SOUCELABS_AUTOMATE_KEY + "@ondemand.apac-southeast-1.saucelabs.com:443/wd/hub";
 	public static final String DB_DEV_URL = "31.34.324.444:3424";
 	public static final String DB_DEV_USER = "curry";
 	public static final String DB_DEV_PASS = "Pass@world1!";
