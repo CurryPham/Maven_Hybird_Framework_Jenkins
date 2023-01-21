@@ -22,6 +22,12 @@ public class GlobalConstants {
 	public static final String BROWSER_SOUCELABS_USERNAME = "oauth-d3891340-042e7";
 	public static final String BROWSER_SOUCELABS_AUTOMATE_KEY = "0088dcc6-5dc5-4085-8a90-8d4cf4c47a0f";
 	public static final String BROWSER_SOUCELABS_STACK_URL = "https://" + BROWSER_SOUCELABS_USERNAME + ":" + BROWSER_SOUCELABS_AUTOMATE_KEY + "@ondemand.apac-southeast-1.saucelabs.com:443/wd/hub";
+	public static final String CROSS_USERNAME = "oauth-d3891340-042e7";
+	public static final String CROSS_KEY = "0088dcc6-5dc5-4085-8a90-8d4cf4c47a0f";
+	public static final String CROSS_URL = "https://" + CROSS_USERNAME + ":" + CROSS_KEY + "@ondemand.apac-southeast-1.saucelabs.com:443/wd/hub";
+	public static final String LAMBDA_USERNAME = "oauth-d3891340-042e7";
+	public static final String LAMBDA_KEY = "0088dcc6-5dc5-4085-8a90-8d4cf4c47a0f";
+	public static final String LAMBDA_URL = "https://" + LAMBDA_USERNAME + ":" + LAMBDA_KEY + "@ondemand.apac-southeast-1.saucelabs.com:443/wd/hub";
 	public static final String DB_DEV_URL = "31.34.324.444:3424";
 	public static final String DB_DEV_USER = "curry";
 	public static final String DB_DEV_PASS = "Pass@world1!";

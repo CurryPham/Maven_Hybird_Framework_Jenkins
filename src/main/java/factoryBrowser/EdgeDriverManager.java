@@ -20,7 +20,7 @@ public class EdgeDriverManager implements IBrowserFactory {
     public WebDriver getBrowserDriver() {
 
         if (!IS_OS_WINDOWS || !IS_OS_MAC) {
-            throw new UnreachableBrowserException("Edge is not supported on" + System.getProperty("os.name"));
+            throw new UnreachableBrowserException("Edge is not supported on " + System.getProperty("os.name"));
         }
         WebDriverManager.edgedriver().setup();
         EdgeOptions options = new EdgeOptions();

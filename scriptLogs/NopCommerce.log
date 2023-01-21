@@ -415,3 +415,10 @@
 [2023-01-21 21:01:37,043] Login - Step 03: Enter to Password textbox with value is '123456'
 [2023-01-21 21:01:37,130] Login - Step 04: Click to Login button
 [2023-01-21 21:01:42,441] Login - Step 05: Verify login success mesage is displayed
+[2023-01-21 23:24:01,033] Register - Step 02: Enter to First Name textbox with value is 'curry'
+[2023-01-21 23:24:01,213] Register - Step 03: Enter to Last name textbox with value is 'pham'
+[2023-01-21 23:24:01,827] Register - Step 04: Enter to Email Address textbox with value is 'curry5197@gmail.com'
+[2023-01-21 23:24:02,052] Register - Step 05: Enter to Password textbox with value is '123456'
+[2023-01-21 23:24:02,189] Register - Step 06: Enter to Confirm Password textbox with value is '123456'
+[2023-01-21 23:24:02,306] Register - Step 07: Click to Register button
+[2023-01-21 23:24:15,122] Register - Step 08: Verify register success mesage is displayed

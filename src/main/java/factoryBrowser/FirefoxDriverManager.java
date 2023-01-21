@@ -8,6 +8,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class FirefoxDriverManager implements IBrowserFactory {
     private String projectPath = GlobalConstants.PROJECT_PATH;
+    private WebDriver driver;
     @Override
     public WebDriver getBrowserDriver() {
         System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
@@ -22,7 +23,6 @@ public class FirefoxDriverManager implements IBrowserFactory {
                 "application/csv,text/csv,image/png,image/jpeg,application/pdf, text/html,text/plain, application/excel,application/vnd.ms-excel,application/x-msexcel,application/octet-stream");
 
         options.addPreference("pdfjs.disable", true);
-
 //        options.addArguments("-private");
         return new FirefoxDriver(options);
     }

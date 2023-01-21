@@ -1,7 +1,7 @@
 package com.nopcommerce.user;
 
 import factoryBrowser.LocalFactory;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import com.aventstack.extentreports.Status;
 import com.nopcommerce.common.Common_01_Register;
@@ -16,22 +16,18 @@ import pageObjects.user.nopCommerce.UserLoginPageObject;
 import pageObjects.user.nopCommerce.UserRegisterPageObject;
 import reportConfig.ExtentTestManager;
 
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
-
 import java.lang.reflect.Method;
 
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
 
-public class Level_18_Pattern_Object extends LocalFactory {
+public class Level_18_Pattern_Object extends BaseTest {
 
-	@Parameters({"browser"})
+	@Parameters({"browser" ,"envName", "serverName", "ipAddress", "portNumber", "osName", "osName"})
 	@BeforeClass
-	public void beforeClass(String browserName) {
-		driver = createDriver(browserName);
+	public void beforeClass( String browserName, String envName, String serverName, @Optional("localhost") String ipAddress, @Optional("4444") String portNumber, @Optional( "Windows") String osName, @Optional("10") String osVersion){
+		driver = getBrowserDriver(envName, serverName, browserName,  ipAddress,  portNumber,   osName,  osName );
 		homePage = PageGeneratorManager.getUserHomePage(driver);
 		showBrowserConsoleLogs(driver);
 

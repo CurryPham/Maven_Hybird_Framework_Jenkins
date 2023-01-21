@@ -23,7 +23,7 @@ public class Grid_Cloud_Source_Labs extends BaseTest {
 	@Parameters({ "browser", "url", "osName"})
 	@BeforeClass
 	public void beforeClass(String browserName, String appUrl, String osName) {
-		driver = getBrowserDriverSoucelab(browserName, appUrl, osName);
+		driver = getSauceDriverSoucelab(browserName, appUrl, osName);
 
 
 		homePage = PageGeneratorManager.getUserHomePage(driver);
