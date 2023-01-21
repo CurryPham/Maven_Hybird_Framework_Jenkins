@@ -1,5 +1,6 @@
 package com.nopcommerce.user;
 
+import factoryBrowser.LocalFactory;
 import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.Status;
@@ -25,12 +26,12 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 
-public class Level_18_Pattern_Object extends BaseTest {
+public class Level_18_Pattern_Object extends LocalFactory {
 
-	@Parameters("browser")
+	@Parameters({"browser"})
 	@BeforeClass
 	public void beforeClass(String browserName) {
-		driver = getBrowserDriver(browserName);
+		driver = createDriver(browserName);
 		homePage = PageGeneratorManager.getUserHomePage(driver);
 		showBrowserConsoleLogs(driver);
 

@@ -10,14 +10,34 @@
  <listener class-name="org.uncommons.reportng.JUnitXMLReporter"></listener>
 </listeners>
 
-  <parameter name = "enviroment" value = "dev"/>
 
-  <test name="Run on chrome">
-  <parameter name = "browser" value = "firefox"/>
+  <test name="Run on firefox">
+  <parameter name = "browser" value = "h_firefox"/>
     <classes>
    
-      <class name="com.nopcommerce.user.Level_22_Multiple_Enviroment_Owner"/>
+      <class name="com.nopcommerce.user.Level_18_Pattern_Object"/>
     </classes> 
   </test>
- 
+  <test name="Run on chrome">
+  <parameter name = "browser" value = "chrome"/>
+    <classes>
+
+      <class name="com.nopcommerce.user.Level_18_Pattern_Object"/>
+    </classes>
+  </test>
+  <test name="Run on hchrome">
+  <parameter name = "browser" value = "h_chrome"/>
+    <classes>
+
+      <class name="com.nopcommerce.user.Level_18_Pattern_Object"/>
+    </classes>
+  </test>
+  <test name="Run on edge">
+  <parameter name = "browser" value = "edge"/>
+    <classes>
+
+      <class name="com.nopcommerce.user.Level_18_Pattern_Object"/>
+    </classes>
+  </test>
+
 </suite> 

@@ -1,17 +1,10 @@
-package commons;
+package factoryBrowser;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.time.format.DecimalStyle;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-import java.util.concurrent.TimeUnit;
-
+import commons.BrowserList;
+import commons.EnviromentList;
+import commons.GlobalConstants;
+import commons.VerificationFailures;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.WebDriver;
@@ -25,13 +18,21 @@ import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.remote.UnreachableBrowserException;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeSuite;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
 
-public class BaseTest {
+import static commons.BrowserList.CHROME;
+
+public class LocalFactory {
 
 	private String projectPath = GlobalConstants.PROJECT_PATH;
 	private WebDriver driver;
@@ -42,11 +43,43 @@ public class BaseTest {
 		deleteAllureReport();
 	}
 
-	protected BaseTest() {
+	protected LocalFactory() {
 		log = LogFactory.getLog(getClass());
 	}
+	
+	public WebDriver createDriver(String browserName) {
+		BrowserList browserList = BrowserList.valueOf(browserName.toUpperCase());
+
+		switch (browserList) {
+			case CHROME:
+                driver = new ChromeDriverManager().getBrowserDriver();
+			break;
+			case H_CHROME:
+                driver = new HeadlessChromeDriverManager().getBrowserDriver();
+			break;
+			case FIREFOX:
+                driver = new FirefoxDriverManager().getBrowserDriver();
+			break;
+			case H_FIREFOX:
+                driver = new HeadlessFirefoxDriverManager().getBrowserDriver();
+			break;
+			case EDGE:
+                driver = new EdgeDriverManager().getBrowserDriver();
+			break;
+			case SAFARI:
+                driver = new SafariDriverManager().getBrowserDriver();
+			break;
+
+			default:
+				throw new UnreachableBrowserException(browserName);
+		}
 
 
+		this.driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.MILLISECONDS);
+		driver.manage().window().maximize();
+		driver.get(GlobalConstants.USER_PAGE_URL);
+		return this.driver;
+	}
 
 	protected WebDriver getBrowserDriver(String browserName) {
 		BrowserList browserList = BrowserList.valueOf(browserName.toUpperCase());
@@ -80,7 +113,7 @@ public class BaseTest {
 			options.addArguments("--headless");
 			options.addArguments("window-size=1920x1080");
 			driver = new FirefoxDriver(options);
-		} else if (browserList == BrowserList.CHROME) {
+		} else if (browserList == CHROME) {
 			WebDriverManager.chromedriver().setup();
 
 			// Add extention to Chrome
@@ -194,7 +227,7 @@ public class BaseTest {
 			options.addArguments("window-size=1920x1080");
 			driver = new FirefoxDriver(options);
 
-		} else if (browserList == BrowserList.CHROME) {
+		} else if (browserList == CHROME) {
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
 
