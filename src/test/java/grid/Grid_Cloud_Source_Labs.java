@@ -4,10 +4,7 @@ import commons.BaseTest;
 import commons.PageGeneratorManager;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pageObjects.user.nopCommerce.UserCustomerInforPageObject;
 import pageObjects.user.nopCommerce.UserHomePageObject;
 import pageObjects.user.nopCommerce.UserLoginPageObject;
@@ -20,11 +17,10 @@ public class Grid_Cloud_Source_Labs extends BaseTest {
 
 
 
-	@Parameters({ "browser", "url", "osName"})
+	@Parameters({"browser" ,"envName", "serverName", "ipAddress", "portNumber", "osName", "osName"})
 	@BeforeClass
-	public void beforeClass(String browserName, String appUrl, String osName) {
-		driver = getSauceDriverSoucelab(browserName, appUrl, osName);
-
+	public void beforeClass(String browserName, String envName, String serverName, String ipAddress,String portNumber, @Optional( "Windows") String osName, @Optional("10") String osVersion){
+		driver = getBrowserDriver(envName, serverName, browserName,  ipAddress,  portNumber,   osName,  osName );
 
 		homePage = PageGeneratorManager.getUserHomePage(driver);
 		dataFaker = DataHelper.getDataHelper();

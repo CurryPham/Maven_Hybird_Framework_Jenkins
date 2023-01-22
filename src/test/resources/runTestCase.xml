@@ -13,9 +13,13 @@
 </listeners>
 
 
-  <test name="Run on fire fox">
-  <parameter name = "browser" value = "Firefox"/>
-  <parameter name = "osName" value = "Windows 10"/>\
+    <parameter name = "envName" value = "grid"/>
+    <parameter name = "serverName" value = "dev"/>
+
+    <test name="Run on fire fox">
+        <parameter name = "browser" value = "chrome"/>
+        <parameter name = "ipAddress" value = "localhost"/>
+  <parameter name = "portNumber" value = "4446"/>
     <classes>
    
       <class name="grid.Grid_Cloud_Source_Labs"/>

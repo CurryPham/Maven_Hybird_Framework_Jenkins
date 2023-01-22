@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Run on chrome"
+<testsuite name="Run on firefox"
            tests="3"
            failures="0"
            errors="0"
            skipped="0"
-           time="6,893">
+           time="10,105">
   <properties />
   
   
-            <testcase name="User_03_My_Account" time="0,642" classname="com.nopcommerce.user.Level_18_Pattern_Object" />
-                <testcase name="User_02_Login" time="1,399" classname="com.nopcommerce.user.Level_18_Pattern_Object" />
-                <testcase name="User_01_Register" time="4,852" classname="com.nopcommerce.user.Level_18_Pattern_Object" />
+            <testcase name="User_02_Login" time="4,586" classname="com.nopcommerce.user.Level_18_Pattern_Object" />
+                <testcase name="User_01_Register" time="4,643" classname="com.nopcommerce.user.Level_18_Pattern_Object" />
+                <testcase name="User_03_My_Account" time="0,876" classname="com.nopcommerce.user.Level_18_Pattern_Object" />
       
 </testsuite>
