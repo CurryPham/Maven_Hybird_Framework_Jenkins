@@ -1,15 +1,11 @@
 package com.nopcommerce.user;
 
-import factoryBrowser.LocalFactory;
 import org.testng.annotations.*;
 
 import com.aventstack.extentreports.Status;
-import com.nopcommerce.common.Common_01_Register;
-import com.nopcommerce.common.Common_01_Register_Cookie;
 
-import commons.BasePage;
 import commons.BaseTest;
-import commons.PageGeneratorManager;
+import pageObjects.user.nopCommerce.PageGeneratorManager;
 import pageObjects.user.nopCommerce.UserCustomerInforPageObject;
 import pageObjects.user.nopCommerce.UserHomePageObject;
 import pageObjects.user.nopCommerce.UserLoginPageObject;
@@ -18,7 +14,6 @@ import reportConfig.ExtentTestManager;
 
 import java.lang.reflect.Method;
 
-import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 

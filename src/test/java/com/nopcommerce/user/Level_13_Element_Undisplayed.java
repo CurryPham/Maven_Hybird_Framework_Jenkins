@@ -3,7 +3,7 @@ package com.nopcommerce.user;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import commons.PageGeneratorManager;
+import pageObjects.user.nopCommerce.PageGeneratorManager;
 import pageObjects.facebook.LoginPageObject;
 
 import org.testng.annotations.BeforeClass;
@@ -19,7 +19,7 @@ public class Level_13_Element_Undisplayed extends BaseTest {
 	public void beforeClass(String browserName, String appUrl) {
 		driver = getBrowserDriver(browserName, appUrl);
 
-		loginPage = PageGeneratorManager.getLoginPage(driver);
+		loginPage = PageGeneratorManager.getPageGeneratorManager().getLoginPage(driver);
 
 	}
 

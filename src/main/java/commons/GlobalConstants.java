@@ -1,41 +1,61 @@
 package commons;
 
-import java.io.File;
+import lombok.Getter;
 
+import java.io.File;
+import java.util.Objects;
+
+
+@Getter
 public class GlobalConstants {
-	public static final String USER_PAGE_URL = "https://demo.nopcommerce.com/";
-	public static final String ADMIN_PAGE_URL = "https://admin-demo.nopcommerce.com";
-	public static final String USER_TESTING_URL = "https://demo.nopcommerce.com/";
-	public static final String ADMIN_TESTING_URL = "https://admin-demo.nopcommerce.com";
-	public static final String PROJECT_PATH = System.getProperty("user.dir");
-	public static final String JAVA_VERSION = System.getProperty("java.version");
-	public static final String OS_NAME = "os.name";
-	public static final String UPLOAD_FILE = PROJECT_PATH + File.separator + "uploadFiles" + File.separator;
-	public static final String DOWLOAD_FILE = PROJECT_PATH + File.separator + "dowloadFiles";
-	public static final String BROWSER_LOG = PROJECT_PATH + File.separator + "browserLogs";
-	public static final String DRAG_DROP_HTML5 = PROJECT_PATH + File.separator + "dragDropsHTML5";
-	public static final String AUTO_IT_SCRIPT = PROJECT_PATH + File.separator + "autoIT";
-	public static final String REPORTNG_SCREENSHOT = PROJECT_PATH + File.separator + "reportNGImages" + File.separator;
-	public static final String BROWSER_USERNAME = "automation_kpN7twLsux";
-	public static final String BROWSER_AUTOMATE_KEY = "yCiWTxExJk6JURrsQWmJ";
-	public static final String BROWSER_STACK_URL = "https://" + BROWSER_USERNAME + ":" + BROWSER_AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
-	public static final String BROWSER_SOUCELABS_USERNAME = "oauth-d3891340-042e7";
-	public static final String BROWSER_SOUCELABS_AUTOMATE_KEY = "0088dcc6-5dc5-4085-8a90-8d4cf4c47a0f";
-	public static final String BROWSER_SOUCELABS_STACK_URL = "https://" + BROWSER_SOUCELABS_USERNAME + ":" + BROWSER_SOUCELABS_AUTOMATE_KEY + "@ondemand.apac-southeast-1.saucelabs.com:443/wd/hub";
-	public static final String CROSS_USERNAME = "oauth-d3891340-042e7";
-	public static final String CROSS_KEY = "0088dcc6-5dc5-4085-8a90-8d4cf4c47a0f";
-	public static final String CROSS_URL = "https://" + CROSS_USERNAME + ":" + CROSS_KEY + "@ondemand.apac-southeast-1.saucelabs.com:443/wd/hub";
-	public static final String LAMBDA_USERNAME = "oauth-d3891340-042e7";
-	public static final String LAMBDA_KEY = "0088dcc6-5dc5-4085-8a90-8d4cf4c47a0f";
-	public static final String LAMBDA_URL = "https://" + LAMBDA_USERNAME + ":" + LAMBDA_KEY + "@ondemand.apac-southeast-1.saucelabs.com:443/wd/hub";
-	public static final String DB_DEV_URL = "31.34.324.444:3424";
-	public static final String DB_DEV_USER = "curry";
-	public static final String DB_DEV_PASS = "Pass@world1!";
-	public static final String DB_TESTING_URL = "23.24.255.24:4242";
-	public static final String DB_TESTING_USER = "currypham";
-	public static final String DB_TESTING_PASS = "Pass@world1!";
-	public static final long SHORT_TIMEOUT = 5;
-	public static final long LONG_TIMEOUT = 30;
-	public static final long RETRY_TEST_FAIL = 3;
+	private static GlobalConstants globalInstance;
+	private GlobalConstants() {
+
+    }
+
+    public static synchronized GlobalConstants getGlobalInstance() {
+		if (globalInstance == null) {
+			globalInstance = new GlobalConstants();
+		}
+//		if (Objects.isNull(globalInstance)) {
+//			globalInstance = new GlobalConstants();
+//		}
+		return  globalInstance;
+	}
+
+	private final String userPageUrl = "https://demo.nopcommerce.com/";
+	private final String adminPageUrl = "https://admin-demo.nopcommerce.com";
+	private final String getTestAppUserUrl = "https://demo.nopcommerce.com/";
+	private final String testAppAdminUrl = "https://admin-demo.nopcommerce.com";
+	private final String projectPath = System.getProperty("user.dir");
+	private final String javaVersion = System.getProperty("java.version");
+	private final String osName = "os.name";
+	private final String uploadFolderPath = projectPath + File.separator + "uploadFiles" + File.separator;
+	private final String dowloadFolderPath = projectPath + File.separator + "dowloadFiles";
+	private final String browserLogPath = projectPath + File.separator + "browserLogs";
+	private final String dragAndDrogHTML5 = projectPath + File.separator + "dragDropsHTML5";
+	private final String autoITScript = projectPath + File.separator + "autoIT";
+	private final String reportingScreenshot = projectPath + File.separator + "reportNGImages" + File.separator;
+	private final String browserStackUsername = "automation_kpN7twLsux";
+	private final String browserStackKey = "yCiWTxExJk6JURrsQWmJ";
+	private final String browserStackUrl = "https://" + browserStackUsername + ":" + browserStackKey + "@hub-cloud.browserstack.com/wd/hub";
+	private final String saucelabUsername = "oauth-d3891340-042e7";
+	private final String saucelabKey = "0088dcc6-5dc5-4085-8a90-8d4cf4c47a0f";
+	private final String saucelabUrl = "https://" + saucelabUsername + ":" + saucelabKey + "@ondemand.apac-southeast-1.saucelabs.com:443/wd/hub";
+	private final String crossBrowserUsername = "oauth-d3891340-042e7";
+	private final String crossBrowserKey = "0088dcc6-5dc5-4085-8a90-8d4cf4c47a0f";
+	private final String crossBrowserUrl = "https://" + crossBrowserUsername + ":" + crossBrowserKey + "@ondemand.apac-southeast-1.saucelabs.com:443/wd/hub";
+	private final String lambaUsername = "oauth-d3891340-042e7";
+	private final String lambaKey = "0088dcc6-5dc5-4085-8a90-8d4cf4c47a0f";
+	private final String lambaUrl = "https://" + lambaUsername + ":" + lambaKey + "@ondemand.apac-southeast-1.saucelabs.com:443/wd/hub";
+	private final String databaseDevUrl = "31.34.324.444:3424";
+	private final String databaseDevUsername = "curry";
+	private final String databaseDevPass = "Pass@world1!";
+	private final String databaseTestingUrl = "23.24.255.24:4242";
+	private final String databaseTestingUsername = "currypham";
+	private final String databaseTestingPass = "Pass@world1!";
+	private final long shortTimeOut = 5;
+	private final long longTimeOut = 30;
+	private final long retryTestRail = 3;
 
 }

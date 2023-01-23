@@ -4,9 +4,8 @@ import org.testng.annotations.Test;
 
 import com.nopcommerce.common.Common_01_Register;
 
-import commons.BasePage;
 import commons.BaseTest;
-import commons.PageGeneratorManager;
+import pageObjects.user.nopCommerce.PageGeneratorManager;
 import pageObjects.user.nopCommerce.UserCustomerInforPageObject;
 import pageObjects.user.nopCommerce.UserHomePageObject;
 import pageObjects.user.nopCommerce.UserLoginPageObject;
@@ -16,7 +15,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 
 public class Level_16_Share_Data_A extends BaseTest {

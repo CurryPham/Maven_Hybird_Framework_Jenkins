@@ -1,5 +1,6 @@
-package grid;
+package com.nopcommerce.user;
 
+import com.aventstack.extentreports.Status;
 import commons.BaseTest;
 import pageObjects.user.nopCommerce.PageGeneratorManager;
 import org.openqa.selenium.WebDriver;
@@ -9,26 +10,22 @@ import pageObjects.user.nopCommerce.UserCustomerInforPageObject;
 import pageObjects.user.nopCommerce.UserHomePageObject;
 import pageObjects.user.nopCommerce.UserLoginPageObject;
 import pageObjects.user.nopCommerce.UserRegisterPageObject;
-import utilities.DataHelper;
-import utilities.Enviroment;
+import reportConfig.ExtentTestManager;
 
-public class Grid_Cloud_Source_Labs extends BaseTest {
-	Enviroment enviroment;
+import java.lang.reflect.Method;
 
-
+public class Level_24_ThreadLocal extends BaseTest {
 
 	@Parameters({"browser" ,"envName", "serverName", "ipAddress", "portNumber", "osName", "osName"})
 	@BeforeClass
-	public void beforeClass(String browserName, String envName, String serverName, String ipAddress,String portNumber, @Optional( "Windows") String osName, @Optional("10") String osVersion){
+	public void beforeClass( String browserName, String envName, String serverName, @Optional("localhost") String ipAddress, @Optional("4444") String portNumber, @Optional( "Windows") String osName, @Optional("10") String osVersion){
 		driver = getBrowserDriver(envName, serverName, browserName,  ipAddress,  portNumber,   osName,  osName );
-
 		homePage = PageGeneratorManager.getUserHomePage(driver);
-		dataFaker = DataHelper.getDataHelper();
 		showBrowserConsoleLogs(driver);
 
-		firstName = dataFaker.getFirstName();
-		lastName = dataFaker.getLastName();
-		emailAddress = dataFaker.getEmailAddress();
+		firstName = "curry";
+		lastName = "pham";
+		emailAddress = "curry" + generateFakeNumber() + "@gmail.com";
 		password = "123456";
 		day = "1";
 		month = "January";
@@ -36,8 +33,9 @@ public class Grid_Cloud_Source_Labs extends BaseTest {
 	}
 
 	@Test
-	public void User_01_Register() {
-		log.info("Register - Step 01: Navigate to 'Register page'");
+	public void User_01_Register(Method method) {
+		ExtentTestManager.startTest(method.getName(), "User_01_Register");
+		ExtentTestManager.getTest().log(Status.INFO, "Register - Step 01: Navigate to 'Register page'");
 		registerPage = homePage.clickToRegister();
 		showBrowserConsoleLogs(driver);
 
@@ -74,8 +72,9 @@ public class Grid_Cloud_Source_Labs extends BaseTest {
 	}
 
 	@Test
-	public void User_02_Login() {
-		log.info("Login - Step 01: Navigate to 'Home page'");
+	public void User_02_Login(Method method) {
+		ExtentTestManager.startTest(method.getName(), "User_02_Login");
+		ExtentTestManager.getTest().log(Status.INFO, "Register - Step 01: Navigate to 'Home page'");
 		loginPage = homePage.openLoginPage();
 		showBrowserConsoleLogs(driver);
 
@@ -120,7 +119,6 @@ public class Grid_Cloud_Source_Labs extends BaseTest {
 
 	private WebDriver driver;
 	private String firstName, lastName, password, emailAddress, day, month, year;
-	private DataHelper dataFaker;
 	private UserHomePageObject homePage;
 	private UserRegisterPageObject registerPage;
 	private UserLoginPageObject loginPage;

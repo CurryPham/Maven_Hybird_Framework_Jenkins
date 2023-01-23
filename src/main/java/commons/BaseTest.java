@@ -34,8 +34,8 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseTest {
 
-    private String projectPath = GlobalConstants.PROJECT_PATH;
-    private WebDriver driver;
+    private String projectPath = GlobalConstants.getGlobalInstance().getProjectPath();
+    private static ThreadLocal <WebDriver> driver = new ThreadLocal <WebDriver>();
     protected final Log log;
 
     @BeforeSuite
@@ -50,32 +50,32 @@ public class BaseTest {
     protected WebDriver getBrowserDriver(String envName, String serverName, String browserName, String ipAddress, String portNumber,  String osName, String osVersion ) {
         switch (envName) {
             case "local":
-                driver =  new LocalFactory(browserName).createDriver();
+                driver.set(new LocalFactory(browserName).createDriver());
             break;
             case "grid":
-                driver =  new GridFactory(browserName, ipAddress, portNumber).createDriver();
+                driver.set(new GridFactory(browserName, ipAddress, portNumber).createDriver());
             break;
             case "browserstack":
-                driver =  new BrowserStackFactory(browserName, osName, osVersion).createDriver();
+                driver.set(new BrowserStackFactory(browserName, osName, osVersion).createDriver());
             break;
             case "saucelab":
-                driver =  new SauceBrowserFactory(browserName, osName).createDriver();
+                driver.set(new SauceBrowserFactory(browserName, osName).createDriver());
                 break;
             case "crossbrowser":
-                driver =  new CrossBrowserFactory(browserName, osName).createDriver();
+                driver.set(new CrossBrowserFactory(browserName, osName).createDriver());
                 break;
             case "lambda":
-                driver =  new LambdaBrowserFactory(browserName, osName).createDriver();
+                driver.set(new LambdaBrowserFactory(browserName, osName).createDriver());
             break;
             default:
                 break;
         }
 
-        this.driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.MILLISECONDS);
-        driver.manage().window().maximize();
-        driver.get(getEnviromentValue(serverName));
+        this.driver.get().manage().timeouts().implicitlyWait(GlobalConstants.getGlobalInstance().getLongTimeOut(), TimeUnit.MILLISECONDS);
+        driver.get().manage().window().maximize();
+        driver.get().get(getEnviromentValue(serverName));
 
-        return driver;
+        return driver.get();
     }
 
     protected WebDriver getBrowserDriver(String browserName) {
@@ -86,12 +86,12 @@ public class BaseTest {
 
             System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE, "true");
             System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE,
-                    GlobalConstants.PROJECT_PATH + "\\browserLogs\\FirefoxLog.log");
+                    GlobalConstants.getGlobalInstance().getProjectPath() + "\\browserLogs\\FirefoxLog.log");
 
             // Add extention to Firefox
             FirefoxProfile profile = new FirefoxProfile();
             File translate = new File(
-                    GlobalConstants.PROJECT_PATH + "\\browserExtenstions\\to_google_translate-4.2.0.xpi");
+                    GlobalConstants.getGlobalInstance().getProjectPath() + "\\browserExtenstions\\to_google_translate-4.2.0.xpi");
             profile.addExtension(translate);
             profile.setAcceptUntrustedCertificates(true);
             profile.setAssumeUntrustedCertificateIssuer(false);
@@ -102,19 +102,19 @@ public class BaseTest {
             options.addArguments("intl.accept_languages", "vi-vn, vi, en-us, en");
 
             options.setProfile(profile);
-            driver = new FirefoxDriver(options);
+            driver.set(new FirefoxDriver(options));
 
         } else if (browserList == BrowserList.H_FIREFOX) {
             WebDriverManager.firefoxdriver().setup();
             FirefoxOptions options = new FirefoxOptions();
             options.addArguments("--headless");
             options.addArguments("window-size=1920x1080");
-            driver = new FirefoxDriver(options);
+            driver.set(new FirefoxDriver(options));
         } else if (browserList == BrowserList.CHROME) {
             WebDriverManager.chromedriver().setup();
 
             // Add extention to Chrome
-            File file = new File(GlobalConstants.PROJECT_PATH + "\\browserExtenstions\\extension_2_0_12_0.crx");
+            File file = new File(GlobalConstants.getGlobalInstance().getProjectPath() + "\\browserExtenstions\\extension_2_0_12_0.crx");
             ChromeOptions options = new ChromeOptions();
             options.addExtensions(file);
             // options.addArguments("--disable notifications");
@@ -123,7 +123,7 @@ public class BaseTest {
             Map<String, Object> prefs = new HashMap<String, Object>();
 
             prefs.put("profile.default_content_settings.popups", 0);
-            prefs.put("download.default_directory", GlobalConstants.PROJECT_PATH + "\\downloadFiles");
+            prefs.put("download.default_directory", GlobalConstants.getGlobalInstance().getProjectPath() + "\\downloadFiles");
             prefs.put("credentials_enable_service", false);
             prefs.put("profile.password_manager_enabled", false);
 
@@ -135,24 +135,24 @@ public class BaseTest {
             System.setProperty("webdriver.chrome.args", "--disable-logging");
             System.setProperty("webdriver.chrome.args", "--disable-logging");
 
-            driver = new ChromeDriver(options);
+            driver.set(new ChromeDriver(options));
         } else if (browserList == BrowserList.H_CHROME) {
             WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--headless");
             options.addArguments("window-size=1920x1080");
-            driver = new ChromeDriver(options);
+            driver.set(new ChromeDriver(options));
         } else if (browserList == BrowserList.EDGE) {
             WebDriverManager.edgedriver().setup();
-            driver = new EdgeDriver();
+            driver.set(new EdgeDriver());
         } else {
             throw new RuntimeException("Please Import Browser Driver");
         }
 
-        this.driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.MILLISECONDS);
-        driver.manage().window().maximize();
-        driver.get(GlobalConstants.USER_PAGE_URL);
-        return this.driver;
+        this.driver.get().manage().timeouts().implicitlyWait(GlobalConstants.getGlobalInstance().getLongTimeOut(), TimeUnit.MILLISECONDS);
+        driver.get().manage().window().maximize();
+        driver.get().get(GlobalConstants.getGlobalInstance().getUserPageUrl());
+        return this.driver.get();
     }
 
     protected WebDriver getBrowserDriverBrowserstack(String browserName, String appUrl, String osName, String osVersion) {
@@ -166,14 +166,14 @@ public class BaseTest {
         Capability.setCapability("name", "Run on" + osName + " | " + osVersion + " | " + browserName);
 
         try {
-            driver = new RemoteWebDriver(new URL(GlobalConstants.BROWSER_STACK_URL), Capability);
+            driver.set(new RemoteWebDriver(new URL(GlobalConstants.getGlobalInstance().getBrowserStackUrl()), Capability));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
-        driver.get(appUrl);
-        return driver;
+        driver.get().manage().timeouts().implicitlyWait(GlobalConstants.getGlobalInstance().getLongTimeOut(), TimeUnit.SECONDS);
+        driver.get().manage().window().maximize();
+        driver.get().get(appUrl);
+        return driver.get();
     }
 
     protected WebDriver getSauceDriverSoucelab(String browserName, String appUrl, String osName) {
@@ -188,14 +188,14 @@ public class BaseTest {
         Capability.setCapability("sauce:options", sauceOptions);
 
         try {
-            driver = new RemoteWebDriver(new URL(GlobalConstants.BROWSER_SOUCELABS_STACK_URL), Capability);
+            driver.set(new RemoteWebDriver(new URL(GlobalConstants.getGlobalInstance().getBrowserStackUrl()), Capability));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
-        driver.get(appUrl);
-        return driver;
+        driver.get().manage().timeouts().implicitlyWait(GlobalConstants.getGlobalInstance().getLongTimeOut(), TimeUnit.SECONDS);
+        driver.get().manage().window().maximize();
+        driver.get().get(appUrl);
+        return driver.get();
     }
 
     protected WebDriver getBrowserDriver(String browserName, String appUrl) {
@@ -215,56 +215,56 @@ public class BaseTest {
             FirefoxOptions options = new FirefoxOptions();
             // options.setProfile(profile);
             options.setAcceptInsecureCerts(false);
-            driver = new FirefoxDriver(options);
+            driver.set(new FirefoxDriver(options));
 
         } else if (browserList == BrowserList.H_FIREFOX) {
             WebDriverManager.firefoxdriver().setup();
             FirefoxOptions options = new FirefoxOptions();
             options.addArguments("--headless");
             options.addArguments("window-size=1920x1080");
-            driver = new FirefoxDriver(options);
+            driver.set(new FirefoxDriver(options));
 
         } else if (browserList == BrowserList.CHROME) {
             WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver();
+            driver.set(new ChromeDriver());
 
             // Add extention to Chrome
-            File file = new File(GlobalConstants.PROJECT_PATH + "\\browserExtenstions\\extension_2_0_12_0.crx");
+            File file = new File(GlobalConstants.getGlobalInstance().getProjectPath() + "\\browserExtenstions\\extension_2_0_12_0.crx");
             ChromeOptions options = new ChromeOptions();
             options.addExtensions(file);
-            driver = new ChromeDriver(options);
+            driver.set(new ChromeDriver(options));
 
         } else if (browserList == BrowserList.H_CHROME) {
             WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--headless");
             options.addArguments("window-size=1920x1080");
-            driver = new ChromeDriver(options);
+            driver.set(new ChromeDriver(options));
         } else if (browserList == BrowserList.EDGE) {
             WebDriverManager.edgedriver().setup();
-            driver = new EdgeDriver();
+            driver.set(new EdgeDriver());
         } else {
             throw new RuntimeException("Please Import Browser Driver");
         }
 
-        this.driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.MILLISECONDS);
-        driver.manage().window().maximize();
-        driver.get(appUrl);
-        return this.driver;
+        this.driver.get().manage().timeouts().implicitlyWait(GlobalConstants.getGlobalInstance().getLongTimeOut(), TimeUnit.MILLISECONDS);
+        driver.get().manage().window().maximize();
+        driver.get().get(appUrl);
+        return this.driver.get();
     }
 
     public WebDriver getDriverInstance() {
-        return this.driver;
+        return this.driver.get();
     }
 
     protected String getEnviromentUrl(String enviromentName) {
         String url = null;
         switch (enviromentName) {
             case "DEV":
-                url = GlobalConstants.USER_PAGE_URL;
+                url = GlobalConstants.getGlobalInstance().getUserPageUrl();
                 break;
             case "TEST":
-                url = GlobalConstants.ADMIN_PAGE_URL;
+                url = GlobalConstants.getGlobalInstance().getAdminPageUrl();
                 break;
         }
         return url;
@@ -355,7 +355,7 @@ public class BaseTest {
 
     public void deleteAllureReport() {
         try {
-            String pathFolderDownload = GlobalConstants.PROJECT_PATH + "/allure-json";
+            String pathFolderDownload = GlobalConstants.getGlobalInstance().getProjectPath() + "/allure-json";
             File file = new File(pathFolderDownload);
             File[] listOfFiles = file.listFiles();
             for (int i = 0; i < listOfFiles.length; i++) {
@@ -376,7 +376,7 @@ public class BaseTest {
                 String osName = System.getProperty("os.name").toLowerCase();
                 log.info("OS name = " + osName);
 
-                String driverInstanceName = driver.toString().toLowerCase();
+                String driverInstanceName = driver.get().toString().toLowerCase();
                 log.info("Driver instance name = " + driverInstanceName);
 
                 if (driverInstanceName.contains("chrome")) {
@@ -414,8 +414,10 @@ public class BaseTest {
                 }
 
                 if (driver != null) {
-                    driver.manage().deleteAllCookies();
-                    driver.quit();
+                    driver.get().manage().deleteAllCookies();
+                    driver.get().quit();
+
+                    driver.remove();
                 }
             } catch (Exception e) {
                 log.info(e.getMessage());

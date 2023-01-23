@@ -2,9 +2,8 @@ package com.nopcommerce.user;
 
 import org.testng.annotations.Test;
 
-import commons.BasePage;
 import commons.BaseTest;
-import commons.PageGeneratorManager;
+import pageObjects.user.nopCommerce.PageGeneratorManager;
 import pageObjects.user.nopCommerce.UserAddressPageObject;
 import pageObjects.user.nopCommerce.UserCustomerInforPageObject;
 import pageObjects.user.nopCommerce.UserHomePageObject;
@@ -16,11 +15,7 @@ import pageObjects.user.nopCommerce.UserRewardPointPageObject;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 
-import java.util.Random;
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 
@@ -37,7 +32,7 @@ public class Level_08_Dynamic_Locator extends BaseTest {
 		emailAddress = "curry" + generateFakeNumber() + "@gmail.com";
 		password = "123456";
 
-		homePage = PageGeneratorManager.getUserHomePage(driver);
+		homePage = PageGeneratorManager.getPageGeneratorManager().getUserHomePage(driver);
 
 		System.out.println("Pre_Conditon - Step 01: Click to Register link");
 		registerPage = homePage.clickToRegister();
@@ -111,19 +106,19 @@ public class Level_08_Dynamic_Locator extends BaseTest {
 	public void User_03_Dynamic_Page_02() {
 
 		customerInforPage.openPagesAtMyAccountByPageName(driver, "Reward points");
-		rewardPointPage = PageGeneratorManager.getUserRewaidPointPage(driver);
+		rewardPointPage = PageGeneratorManager.getPageGeneratorManager().getUserRewaidPointPage(driver);
 
 		rewardPointPage.openPagesAtMyAccountByPageName(driver, "Addresses");
-		addressPage = PageGeneratorManager.getUserAddressPage(driver);
+		addressPage = PageGeneratorManager.getPageGeneratorManager().getUserAddressPage(driver);
 
 		addressPage.openPagesAtMyAccountByPageName(driver, "Reward points");
-		rewardPointPage = PageGeneratorManager.getUserRewaidPointPage(driver);
+		rewardPointPage = PageGeneratorManager.getPageGeneratorManager().getUserRewaidPointPage(driver);
 
 		rewardPointPage.openPagesAtMyAccountByPageName(driver, "My product reviews");
-		myProductReviewPage = PageGeneratorManager.getUserMyProductReview(driver);
+		myProductReviewPage = PageGeneratorManager.getPageGeneratorManager().getUserMyProductReview(driver);
 
 		myProductReviewPage.openPagesAtMyAccountByPageName(driver, "Customer info");
-		customerInforPage = PageGeneratorManager.getUserCustomerInforPage(driver);
+		customerInforPage = PageGeneratorManager.getPageGeneratorManager().getUserCustomerInforPage(driver);
 
 	}
 

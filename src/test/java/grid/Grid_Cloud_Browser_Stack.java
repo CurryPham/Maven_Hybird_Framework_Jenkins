@@ -1,7 +1,7 @@
 package grid;
 
 import commons.BaseTest;
-import commons.PageGeneratorManager;
+import pageObjects.user.nopCommerce.PageGeneratorManager;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;

@@ -2,12 +2,8 @@ package com.nopcommerce.user;
 
 import org.testng.annotations.Test;
 
-import com.nopcommerce.common.Common_01_Register;
-import com.nopcommerce.common.Common_01_Register_Cookie;
-
-import commons.BasePage;
 import commons.BaseTest;
-import commons.PageGeneratorManager;
+import pageObjects.user.nopCommerce.PageGeneratorManager;
 import pageObjects.user.nopCommerce.UserCustomerInforPageObject;
 import pageObjects.user.nopCommerce.UserHomePageObject;
 import pageObjects.user.nopCommerce.UserLoginPageObject;

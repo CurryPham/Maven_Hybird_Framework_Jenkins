@@ -3,7 +3,6 @@ package pageObjects.user.nopCommerce;
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
-import commons.PageGeneratorManager;
 import io.qameta.allure.Step;
 import pageUls.nopCommerce.user.HomePageUI;
 
@@ -18,7 +17,7 @@ public class UserHomePageObject extends BasePage {
 	public UserRegisterPageObject clickToRegister() {
 		waitForElementClickable(driver, HomePageUI.REGISTER_LINK);
 		clickToElement(driver, HomePageUI.REGISTER_LINK);
-		return PageGeneratorManager.getUserRegisterPage(driver);
+		return PageGeneratorManager.getPageGeneratorManager().getUserRegisterPage(driver);
 	}
 
 	@Step("Verify Login success")
@@ -30,13 +29,13 @@ public class UserHomePageObject extends BasePage {
 	@Step("Navigate to Login page")
 	public UserLoginPageObject openLoginPage() {
 		clickToElement(driver, HomePageUI.LOGIN_LINK);
-		return PageGeneratorManager.getUserLoginPage(driver);
+		return PageGeneratorManager.getPageGeneratorManager().getUserLoginPage(driver);
 	}
 
 	@Step("Navigate to Customer infor page")
 	public UserCustomerInforPageObject clickToCustomerInfor() {
 		clickToElement(driver, HomePageUI.MY_ACCOUNT_LINK);
-		return PageGeneratorManager.getUserCustomerInforPage(driver);
+		return PageGeneratorManager.getPageGeneratorManager().getUserCustomerInforPage(driver);
 	}
 
 }

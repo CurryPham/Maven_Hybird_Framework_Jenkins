@@ -2,9 +2,8 @@ package com.nopcommerce.user;
 
 import org.testng.annotations.Test;
 
-import commons.BasePage;
 import commons.BaseTest;
-import commons.PageGeneratorManager;
+import pageObjects.user.nopCommerce.PageGeneratorManager;
 import pageObjects.user.nopCommerce.UserAddressPageObject;
 import pageObjects.user.nopCommerce.UserCustomerInforPageObject;
 import pageObjects.user.nopCommerce.UserHomePageObject;
@@ -16,11 +15,7 @@ import pageObjects.user.nopCommerce.UserRewardPointPageObject;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 
-import java.util.Random;
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 

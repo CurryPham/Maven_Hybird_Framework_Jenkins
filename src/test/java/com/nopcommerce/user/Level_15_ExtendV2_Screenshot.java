@@ -2,9 +2,8 @@ package com.nopcommerce.user;
 
 import org.testng.annotations.Test;
 
-import commons.BasePage;
 import commons.BaseTest;
-import commons.PageGeneratorManager;
+import pageObjects.user.nopCommerce.PageGeneratorManager;
 import pageObjects.user.nopCommerce.UserCustomerInforPageObject;
 import pageObjects.user.nopCommerce.UserHomePageObject;
 import pageObjects.user.nopCommerce.UserLoginPageObject;
@@ -16,7 +15,6 @@ import org.testng.annotations.Parameters;
 import java.lang.reflect.Method;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 
 public class Level_15_ExtendV2_Screenshot extends BaseTest {

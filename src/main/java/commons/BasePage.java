@@ -19,11 +19,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import pageObjects.admin.nopCommerce.AdminPageObject;
-import pageObjects.user.nopCommerce.UserAddressPageObject;
-import pageObjects.user.nopCommerce.UserCustomerInforPageObject;
-import pageObjects.user.nopCommerce.UserHomePageObject;
-import pageObjects.user.nopCommerce.UserMyProductReviewPageObject;
-import pageObjects.user.nopCommerce.UserRewardPointPageObject;
+import pageObjects.user.nopCommerce.*;
 import pageUIs.JQuery.uploadFile.BasePageJQueryUI;
 import pageUls.nopCommerce.user.BasePageUI;
 
@@ -455,7 +451,7 @@ public class BasePage {
 	}
 
 	public void uploadMultipleFiles(WebDriver driver, String... fileNames) {
-		String filePath = GlobalConstants.UPLOAD_FILE;
+		String filePath = GlobalConstants.getGlobalInstance().getUploadFolderPath();
 		String fullFileName = "";
 
 		for (String file : fileNames) {
@@ -515,25 +511,25 @@ public class BasePage {
 	public UserAddressPageObject openAddressPage(WebDriver driver) {
 		waitForElementClickable(driver, BasePageUI.ADDRESS_LINK);
 		clickToElement(driver, BasePageUI.ADDRESS_LINK);
-		return PageGeneratorManager.getUserAddressPage(driver);
+		return PageGeneratorManager.getPageGeneratorManager().getUserAddressPage(driver);
 	}
 
 	public UserRewardPointPageObject openRewardPointPage(WebDriver driver) {
 		waitForElementClickable(driver, BasePageUI.REWARD_POINT_LINK);
 		clickToElement(driver, BasePageUI.REWARD_POINT_LINK);
-		return PageGeneratorManager.getUserRewaidPointPage(driver);
+		return PageGeneratorManager.getPageGeneratorManager().getUserRewaidPointPage(driver);
 	}
 
 	public UserMyProductReviewPageObject openMyProductReviewPage(WebDriver driver) {
 		waitForElementClickable(driver, BasePageUI.MY_PRODUCT_REVIEW_LINK);
 		clickToElement(driver, BasePageUI.MY_PRODUCT_REVIEW_LINK);
-		return PageGeneratorManager.getUserMyProductReview(driver);
+		return PageGeneratorManager.getPageGeneratorManager().getUserMyProductReview(driver);
 	}
 
 	public UserCustomerInforPageObject openCustomerInforPage(WebDriver driver) {
 		waitForElementClickable(driver, BasePageUI.CUSTOMER_INFOR_LINK);
 		clickToElement(driver, BasePageUI.CUSTOMER_INFOR_LINK);
-		return PageGeneratorManager.getUserCustomerInforPage(driver);
+		return PageGeneratorManager.getPageGeneratorManager().getUserCustomerInforPage(driver);
 	}
 
 	public BasePage openPagesAtMyAccountByName(WebDriver driver, String pageName) {
@@ -541,13 +537,13 @@ public class BasePage {
 		clickToElement(driver, BasePageUI.DYNAMIC_PAGES_AT_MY_ACCOUNT_AREA, pageName);
 		switch (pageName) {
 		case "Addresses":
-			return PageGeneratorManager.getUserAddressPage(driver);
+			return PageGeneratorManager.getPageGeneratorManager().getUserAddressPage(driver);
 		case "Customer info":
-			return PageGeneratorManager.getUserCustomerInforPage(driver);
+			return PageGeneratorManager.getPageGeneratorManager().getUserCustomerInforPage(driver);
 		case "Reward points":
-			return PageGeneratorManager.getUserRewaidPointPage(driver);
+			return PageGeneratorManager.getPageGeneratorManager().getUserRewaidPointPage(driver);
 		case "My product reviews":
-			return PageGeneratorManager.getUserMyProductReview(driver);
+			return PageGeneratorManager.getPageGeneratorManager().getUserMyProductReview(driver);
 		default:
 			throw new RuntimeException("Invalid page name at My Account Area.");
 		}
@@ -561,14 +557,14 @@ public class BasePage {
 	public UserHomePageObject clickToLogoutLinkAtUserPage(WebDriver driver) {
 		waitForElementClickable(driver, BasePageUI.LOGOUT_LINK_AT_USER);
 		clickToElement(driver, BasePageUI.LOGOUT_LINK_AT_USER);
-		return PageGeneratorManager.getUserHomePage(driver);
+		return PageGeneratorManager.getPageGeneratorManager().getUserHomePage(driver);
 	}
 
 	public AdminPageObject clickToLogoutLinkAtAdminPage(WebDriver driver) {
 		waitForElementVisible(driver, BasePageUI.NAV_ICON);
 		waitForElementClickable(driver, BasePageUI.LOGOUT_LINK_AT_ADMIN);
 		clickToElement(driver, BasePageUI.LOGOUT_LINK_AT_ADMIN);
-		return PageGeneratorManager.getAdminLoginPage(driver);
+		return PageGeneratorManager.getPageGeneratorManager().getAdminLoginPage(driver);
 	}
 
 	/**
@@ -610,7 +606,7 @@ public class BasePage {
 	 * Click to dynamic radio button by label name
 	 * 
 	 * @param driver
-	 * @param checkboxLabelName
+	 * @param radioLabelName
 	 */
 	public void clickToRadioButtonByLabel(WebDriver driver, String radioLabelName) {
 		waitForElementClickable(driver, BasePageUI.DYNAMIC_RADIO_BUTTON_BY_LABEL, radioLabelName);
@@ -640,6 +636,6 @@ public class BasePage {
 		return getElementAttribute(driver, BasePageUI.DYNAMIC_TEXTBOX_BY_ID, "value", textboxID);
 	}
 
-	private long longTimeout = GlobalConstants.LONG_TIMEOUT;
-	private long shortTimeout = GlobalConstants.SHORT_TIMEOUT;
+	private long longTimeout = GlobalConstants.getGlobalInstance().getLongTimeOut();
+	private long shortTimeout = GlobalConstants.getGlobalInstance().getShortTimeOut();
 }

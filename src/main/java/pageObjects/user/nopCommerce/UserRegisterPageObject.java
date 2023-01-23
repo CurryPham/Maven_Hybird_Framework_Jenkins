@@ -2,7 +2,6 @@ package pageObjects.user.nopCommerce;
 
 import org.openqa.selenium.WebDriver;
 import commons.BasePage;
-import commons.PageGeneratorManager;
 import io.qameta.allure.Step;
 import pageUls.nopCommerce.user.RegisterPageUI;
 

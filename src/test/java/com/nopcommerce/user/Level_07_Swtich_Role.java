@@ -2,28 +2,20 @@ package com.nopcommerce.user;
 
 import org.testng.annotations.Test;
 
-import commons.BasePage;
 import commons.BaseTest;
 import commons.GlobalConstants;
-import commons.PageGeneratorManager;
+import pageObjects.user.nopCommerce.PageGeneratorManager;
 import pageObjects.admin.nopCommerce.AdminDashboardPageObject;
 import pageObjects.admin.nopCommerce.AdminPageObject;
-import pageObjects.user.nopCommerce.UserAddressPageObject;
 import pageObjects.user.nopCommerce.UserCustomerInforPageObject;
 import pageObjects.user.nopCommerce.UserHomePageObject;
 import pageObjects.user.nopCommerce.UserLoginPageObject;
-import pageObjects.user.nopCommerce.UserMyProductReviewPageObject;
 import pageObjects.user.nopCommerce.UserRegisterPageObject;
-import pageObjects.user.nopCommerce.UserRewardPointPageObject;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 
-import java.util.Random;
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 
@@ -42,7 +34,7 @@ public class Level_07_Swtich_Role extends BaseTest {
 		adminEmailAddress = "admin@yourstore.com";
 		adminPassword = "admin";
 
-		userHomePage = PageGeneratorManager.getUserHomePage(driver);
+		userHomePage = PageGeneratorManager.getPageGeneratorManager().getUserHomePage(driver);
 
 		System.out.println("Pre_Conditon - Step 01: Click to Register link");
 		userRegisterPage = userHomePage.clickToRegister();
@@ -72,8 +64,8 @@ public class Level_07_Swtich_Role extends BaseTest {
 
 		userHomePage = userCustomerInforPage.clickToLogoutLinkAtUserPage(driver);
 
-		userHomePage.openUrl(driver, GlobalConstants.ADMIN_PAGE_URL);
-		adminLoginPage = PageGeneratorManager.getAdminLoginPage(driver);
+		userHomePage.openUrl(driver, GlobalConstants.getGlobalInstance().getAdminPageUrl());
+		adminLoginPage = PageGeneratorManager.getPageGeneratorManager().getAdminLoginPage(driver);
 
 		adminDashboardPage = adminLoginPage.loginAsAdmin(adminEmailAddress, adminPassword);
 		Assert.assertTrue(adminDashboardPage.isDashboardHeaderDisplayed());
@@ -83,8 +75,8 @@ public class Level_07_Swtich_Role extends BaseTest {
 
 	@Test
 	public void Role_02_Admin_To_User() {
-		adminLoginPage.openUrl(driver, GlobalConstants.USER_PAGE_URL);
-		userHomePage = PageGeneratorManager.getUserHomePage(driver);
+		adminLoginPage.openUrl(driver, GlobalConstants.getGlobalInstance().getUserPageUrl());
+		userHomePage = PageGeneratorManager.getPageGeneratorManager().getUserHomePage(driver);
 
 		userLoginPage = userHomePage.openLoginPage();
 
