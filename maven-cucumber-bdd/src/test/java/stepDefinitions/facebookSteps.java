@@ -1,24 +1,37 @@
 package stepDefinitions;
 
+import cucumber.api.DataTable;
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class facebookSteps {
     WebDriver driver;
 
-    @Given("^Open facebook application$")
+    @Before("@parameter")
+//    @Given("^Open facebook application$")
     public void openFacebookApplication()  {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.get("https://www.facebook.com");
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    }
+
+    @After("@parameter")
+//    @And("^Close application$")
+    public void closeApplication()  {
+        driver.quit();
     }
 
     @When("^Input to Username Textbox$")
@@ -56,7 +69,7 @@ public class facebookSteps {
     }
 
     @When("^Input to Username Textbox with ([^\"]*)$")
-    public void inputToUsernameTextboxWithAutomationtestGmailCom(String username) {
+    public void c(String username) {
         driver.findElement(By.id("email")).clear();
         driver.findElement(By.id("email")).sendKeys(username);
     }
@@ -72,8 +85,19 @@ public class facebookSteps {
         driver.findElement(By.xpath("//button[@data-testid='royal_login_button']")).click();
     }
 
-    @And("^Close application$")
-    public void closeApplication()  {
-        //driver.quit();
+    @When("^Input to Username and Password$")
+    public void inputToUsernamePassword(DataTable table) {
+        //List<Map<String, String>> customer = table.asMaps(String.class, String.class);
+        for (Map<String, String> loginInfor : table.asMaps(String.class, String.class)) {
+            driver.findElement(By.id("email")).clear();
+            driver.findElement(By.id("email")).sendKeys(loginInfor.get("Username"));
+
+            driver.findElement(By.id("pass")).clear();
+            driver.findElement(By.id("pass")).sendKeys(loginInfor.get("Password"));
+        }
     }
+
+
+
+
 }
