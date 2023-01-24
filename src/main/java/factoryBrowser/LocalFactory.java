@@ -34,7 +34,7 @@ import static commons.BrowserList.CHROME;
 
 public class LocalFactory {
 
-	private String projectPath = GlobalConstants.PROJECT_PATH;
+	private String projectPath = GlobalConstants.getGlobalInstance().getProjectPath();
 	private WebDriver driver;
 	private String browserName;
 

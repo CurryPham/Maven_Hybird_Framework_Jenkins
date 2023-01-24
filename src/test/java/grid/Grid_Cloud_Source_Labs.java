@@ -22,7 +22,7 @@ public class Grid_Cloud_Source_Labs extends BaseTest {
 	public void beforeClass(String browserName, String envName, String serverName, String ipAddress,String portNumber, @Optional( "Windows") String osName, @Optional("10") String osVersion){
 		driver = getBrowserDriver(envName, serverName, browserName,  ipAddress,  portNumber,   osName,  osName );
 
-		homePage = PageGeneratorManager.getUserHomePage(driver);
+		homePage = PageGeneratorManager.getPageGeneratorManager().getUserHomePage(driver);
 		dataFaker = DataHelper.getDataHelper();
 		showBrowserConsoleLogs(driver);
 
@@ -66,7 +66,7 @@ public class Grid_Cloud_Source_Labs extends BaseTest {
 
 		log.info("Register - Step 07: Click to Register button");
 		registerPage.clickToButtonByText(driver, "Register");
-		homePage = PageGeneratorManager.getUserHomePage(driver);
+		homePage = PageGeneratorManager.getPageGeneratorManager().getUserHomePage(driver);
 		showBrowserConsoleLogs(driver);
 
 		log.info("Register - Step 08: Verify register success mesage is displayed");
@@ -87,7 +87,7 @@ public class Grid_Cloud_Source_Labs extends BaseTest {
 
 		log.info("Login - Step 04: Click to Login button");
 		loginPage.clickToButtonByText(driver, "Log in");
-		homePage = PageGeneratorManager.getUserHomePage(driver);
+		homePage = PageGeneratorManager.getPageGeneratorManager().getUserHomePage(driver);
 		showBrowserConsoleLogs(driver);
 
 		log.info("Login - Step 05: Verify login success mesage is displayed");

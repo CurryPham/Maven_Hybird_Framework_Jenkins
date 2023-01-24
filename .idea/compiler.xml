@@ -7,8 +7,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="com.automation.testing" />
+        <module name="maven-cucumber-bdd" />
+        <module name="Maven Hybird Framework" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="com.automation.testing" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>

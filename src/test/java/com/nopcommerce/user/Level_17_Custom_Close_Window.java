@@ -27,7 +27,7 @@ public class Level_17_Custom_Close_Window extends BaseTest {
 		password = "123456";
 
 		driver = getBrowserDriver(browserName);
-		homePage = PageGeneratorManager.getUserHomePage(driver);
+		homePage = PageGeneratorManager.getPageGeneratorManager().getUserHomePage(driver);
 
 		log.info("Pre_Condition - Step 01: Navigate to 'Register page'");
 		registerPage = homePage.clickToRegister();

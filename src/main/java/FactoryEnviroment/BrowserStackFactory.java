@@ -33,7 +33,7 @@ public class BrowserStackFactory {
 
 
         try {
-            driver = new RemoteWebDriver(new URL(GlobalConstants.BROWSER_STACK_URL), Capability);
+            driver = new RemoteWebDriver(new URL(GlobalConstants.getGlobalInstance().getBrowserStackUrl()), Capability);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

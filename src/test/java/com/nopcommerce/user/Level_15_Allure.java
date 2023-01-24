@@ -30,7 +30,7 @@ public class Level_15_Allure extends BaseTest {
 		emailAddress = "curry" + generateFakeNumber() + "@gmail.com";
 		password = "123456";
 
-		homePage = PageGeneratorManager.getUserHomePage(driver);
+		homePage = PageGeneratorManager.getPageGeneratorManager().getUserHomePage(driver);
 
 	}
 

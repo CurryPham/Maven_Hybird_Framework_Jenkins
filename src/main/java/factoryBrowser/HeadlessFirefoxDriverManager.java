@@ -9,7 +9,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class HeadlessFirefoxDriverManager implements IBrowserFactory {
-    private String projectPath = GlobalConstants.PROJECT_PATH;
+    private String projectPath = GlobalConstants.getGlobalInstance().getProjectPath();
     @Override
     public WebDriver getBrowserDriver() {
         System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");

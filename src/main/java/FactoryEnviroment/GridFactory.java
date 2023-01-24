@@ -23,7 +23,7 @@ public class GridFactory {
     private String ipAddress;
     private String portNumber;
     private WebDriver driver;
-    private String projectPath = GlobalConstants.PROJECT_PATH;
+    private String projectPath = GlobalConstants.getGlobalInstance().getProjectPath();
 
     public GridFactory(String browserName, String ipAddress, String portNumber) {
         this.browserName = browserName;

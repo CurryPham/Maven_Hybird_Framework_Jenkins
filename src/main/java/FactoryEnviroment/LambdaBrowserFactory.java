@@ -33,7 +33,7 @@ public class LambdaBrowserFactory {
         }
         Capability.setCapability("name", "Run on" + osName + " | " + browserName);
         try {
-            driver = new RemoteWebDriver(new URL(GlobalConstants.LAMBDA_URL), Capability);
+            driver = new RemoteWebDriver(new URL(GlobalConstants.getGlobalInstance().getLambaUrl()), Capability);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

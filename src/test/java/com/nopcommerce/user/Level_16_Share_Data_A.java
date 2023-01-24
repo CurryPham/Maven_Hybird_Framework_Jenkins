@@ -23,7 +23,7 @@ public class Level_16_Share_Data_A extends BaseTest {
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
-		homePage = PageGeneratorManager.getUserHomePage(driver);
+		homePage = PageGeneratorManager.getPageGeneratorManager().getUserHomePage(driver);
 
 		log.info("Register - Step 01: Navigate to 'Home page'");
 		loginPage = homePage.openLoginPage();

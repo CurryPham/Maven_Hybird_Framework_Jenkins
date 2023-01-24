@@ -23,7 +23,7 @@ public class Level_16_Share_Data_C extends BaseTest {
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
-		homePage = PageGeneratorManager.getUserHomePage(driver);
+		homePage = PageGeneratorManager.getPageGeneratorManager().getUserHomePage(driver);
 
 		emailAddress = Common_01_Register.emailAddress;
 		password = Common_01_Register.password;

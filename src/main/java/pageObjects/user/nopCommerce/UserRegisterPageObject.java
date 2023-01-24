@@ -17,7 +17,7 @@ public class UserRegisterPageObject extends BasePage {
 	public UserHomePageObject clickToRegisterButton() {
 		waitForElementClickable(driver, RegisterPageUI.REGISTER_LINK);
 		clickToElement(driver, RegisterPageUI.REGISTER_LINK);
-		return PageGeneratorManager.getUserHomePage(driver);
+		return PageGeneratorManager.getPageGeneratorManager().getUserHomePage(driver);
 	}
 
 	@Step("Enter to First name textbox value is {0}")

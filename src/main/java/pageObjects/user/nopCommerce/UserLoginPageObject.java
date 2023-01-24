@@ -58,4 +58,8 @@ public class UserLoginPageObject extends BasePage {
 		return false;
 	}
 
+	public String getLoginPageUrl() {
+		waitForElementVisible(driver, LoginPageUI.LOGIN_LINK);
+		return driver.getCurrentUrl();
+	}
 }

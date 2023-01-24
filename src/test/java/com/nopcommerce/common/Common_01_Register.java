@@ -16,7 +16,7 @@ public class Common_01_Register extends BaseTest {
 	public void Register(String browserName) {
 
 		driver = getBrowserDriver(browserName);
-		homePage = PageGeneratorManager.getUserHomePage(driver);
+		homePage = PageGeneratorManager.getPageGeneratorManager().getUserHomePage(driver);
 
 		firstName = "curry";
 		lastName = "pham";

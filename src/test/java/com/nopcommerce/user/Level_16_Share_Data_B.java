@@ -26,7 +26,7 @@ public class Level_16_Share_Data_B extends BaseTest {
 		password = "123456";
 
 		driver = getBrowserDriver(browserName);
-		homePage = PageGeneratorManager.getUserHomePage(driver);
+		homePage = PageGeneratorManager.getPageGeneratorManager().getUserHomePage(driver);
 
 		log.info("Pre_Condition - Step 01: Navigate to 'Register page'");
 		registerPage = homePage.clickToRegister();

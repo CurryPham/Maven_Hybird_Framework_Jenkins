@@ -23,7 +23,7 @@ public class ChromeDriverManager implements IBrowserFactory {
 
         HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
         chromePrefs.put("profile.default_content_setting.popups", 0);
-        chromePrefs.put("dowload.default_diretory", GlobalConstants.DOWLOAD_FILE);
+        chromePrefs.put("dowload.default_diretory", GlobalConstants.getGlobalInstance().getDowloadFolderPath());
         options.setExperimentalOption("prefs", chromePrefs);
 
 //        options.addArguments("--incognito");

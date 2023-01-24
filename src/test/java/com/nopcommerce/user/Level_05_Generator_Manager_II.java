@@ -34,7 +34,7 @@ public class Level_05_Generator_Manager_II extends BaseTest {
 		emailAddress = "curry" + generateFakeNumber() + "@gmail.com";
 		password = "123456";
 
-		homePage = PageGeneratorManager.getUserHomePage(driver);
+		homePage = PageGeneratorManager.getPageGeneratorManager().getUserHomePage(driver);
 
 		System.out.println("Pre_Conditon - Step 01: Click to Register link");
 		homePage.clickToRegister();
