@@ -1,12 +1,12 @@
-1674373706070	geckodriver	INFO	Listening on 127.0.0.1:11183
-1674373706899	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "C:\\Users\\Alpaca\\AppData\\Local\\Temp\\rust_mozprofileQpdYYn"
-1674373707379	Marionette	INFO	Marionette enabled
-1674373707384	Marionette	INFO	Listening on port 56753
-Read port: 56753
-1674373707819	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
-console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Alpaca\\AppData\\Local\\Temp\\rust_mozprofileQpdYYn\\search.json.mozlz4", (void 0)))
+1674647592940	geckodriver	INFO	Listening on 127.0.0.1:41106
+1674647593754	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "C:\\Users\\khoap\\AppData\\Local\\Temp\\rust_mozprofileuljiMC"
+1674647594498	Marionette	INFO	Marionette enabled
+1674647594507	Marionette	INFO	Listening on port 60415
+Read port: 60415
+1674647594944	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\khoap\\AppData\\Local\\Temp\\rust_mozprofileuljiMC\\search.json.mozlz4", (void 0)))
+console.error: Region.jsm: "Error fetching region" (new Error("TIMEOUT", "resource://gre/modules/Region.sys.mjs", 763))
+console.error: Region.jsm: "Failed to fetch region" (new Error("TIMEOUT", "resource://gre/modules/Region.sys.mjs", 415))
 console.warn: LoginRecipes: "Falling back to a synchronous message for: https://demo.nopcommerce.com."
 console.warn: LoginRecipes: "Falling back to a synchronous message for: https://demo.nopcommerce.com."
-1674373831029	Marionette	INFO	Stopped listening on port 56753
-console.error: services.settings: 
-  main/query-stripping Signature failed  TypeError: NetworkError: Network request failed
+1674647607879	Marionette	INFO	Stopped listening on port 60415

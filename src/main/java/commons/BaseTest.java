@@ -81,8 +81,7 @@ public class BaseTest {
     protected WebDriver getBrowserDriver(String browserName) {
         BrowserList browserList = BrowserList.valueOf(browserName.toUpperCase());
         if (browserList == BrowserList.FIREFOX) {
-            // WebDriverManager.firefoxdriver().setup();
-            System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
+             WebDriverManager.firefoxdriver().setup();
 
             System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE, "true");
             System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE,
