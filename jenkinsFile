@@ -18,6 +18,6 @@ node {
     }
 
     stage('4 - Public Report'){
-publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\PILELINE_MAVEN_HYBIRD_FRAMEWORK\\target\\surefire-reports\\html', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: 'ReportNG HTML', useWrapperFileDirectly: true])
+        testNG()
     }
 }
