@@ -31,6 +31,7 @@
         <owner.version>1.0.10</owner.version>
         <enviroment>dev</enviroment>
         <lombok.version>1.18.24</lombok.version>
+        <cucumber.version> 1.2.5 </cucumber.version>
     </properties>
 
     <!-- Quản lí thư viện -->
@@ -47,6 +48,12 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
+        </dependency>
+
+        <dependency>
+                    <groupId>info.cukes</groupId>
+                    <artifactId>cucumber-testng</artifactId>
+                    <version>${cucumber.version}</version>
         </dependency>
 
         <!-- Selenium Java -->
