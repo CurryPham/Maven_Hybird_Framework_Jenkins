@@ -93,7 +93,7 @@ public class Level_18_Pattern_Object extends BaseTest {
 		showBrowserConsoleLogs(driver);
 
 		log.info("Login - Step 05: Verify login success mesage is displayed");
-		Assert.assertEquals(homePage.getSuccessLogin(), "My account");
+		Assert.assertEquals(homePage.getSuccessLogin(), "My account...");
 	}
 
 	@Test
