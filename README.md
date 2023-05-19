@@ -1,0 +1,1 @@
+# Maven_Hybird_Framework_Jenkins![2023-05-19 14_55_50-CV Phạm Đăng Khoa - CV Curry pdf and 17 more pages - Personal - Microsoft​ Edge](https://github.com/CurryPham/Maven_Hybird_Framework_Jenkins/assets/64634056/650b7131-47f9-485d-8f31-d5f50502a961)
